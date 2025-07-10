@@ -36,13 +36,13 @@
 При превышении лимита автоматически удаляются самые старые записи по принципу FIFO (First In, First Out)
 
 ```cpp
-void InMemoryHistory::AddEntry(const std::string& operation) 
-{
-    if (m_operations.size() >= maxHistorySize) {
-        m_operations.erase(m_operations.begin());  // Удаление самой старой записи
-    }
-    m_operations.push_back(operation);  // Добавление новой записи
-}
+   void InMemoryHistory::AddEntry(const std::string& operation) 
+   {
+       if (m_operations.size() >= maxHistorySize) {
+           m_operations.erase(m_operations.begin());  // Удаление самой старой записи
+       }
+       m_operations.push_back(operation);  // Добавление новой записи
+   }```
  
 ## Тестирование функционала
 
