@@ -27,3 +27,20 @@
    
    // При переполнении
    throw std::overflow_error(Consts::DIVISION_OVERFLOW_MSG);
+2. **Управление историей операций**:
+
+Реализовано ограничение на максимальное количество хранимых операций:
+
+**Лимит записей**: `1000` (maxHistorySize = 1000)
+
+**Механизм очистки**:  
+При превышении лимита автоматически удаляются самые старые записи по принципу FIFO (First In, First Out)
+
+```cpp
+void InMemoryHistory::AddEntry(const std::string& operation) 
+{
+    if (m_operations.size() >= maxHistorySize) {
+        m_operations.erase(m_operations.begin());  // Удаление самой старой записи
+    }
+    m_operations.push_back(operation);  // Добавление новой записи
+}   
